@@ -1,0 +1,57 @@
+{
+  "name": "@inotom/vue-fold-box",
+  "version": "1.0.0",
+  "description": "A Vue.js component of folding container.",
+  "main": "dist/vue-fold-box.umd.js",
+  "cdn": "dist/vue-fold-box.min.js",
+  "config": {
+    "dist_dir": "dist",
+    "src_dir": "src"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
+    "prebuild": "rimraf $npm_package_config_dist_dir/vue-fold-box.* && npm run clean && npm test",
+    "build": "NODE_ENV=production webpack -p --config config/webpack.prod.js",
+    "clean": "rimraf '**/.DS_Store'",
+    "lint": "eslint $npm_package_config_src_dir",
+    "prettier": "prettier --write 'src/**/*.js'",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inotom/vue-fold-box.git"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "inotom (http://www.serendip.ws/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inotom/vue-fold-box/issues"
+  },
+  "homepage": "https://github.com/inotom/vue-fold-box#readme",
+  "devDependencies": {
+    "@babel/core": "7.3.4",
+    "@babel/preset-env": "7.3.4",
+    "autoprefixer": "9.4.10",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.5",
+    "css-loader": "2.1.1",
+    "eslint": "5.15.1",
+    "eslint-plugin-vue": "5.2.2",
+    "node-sass": "4.11.0",
+    "postcss-loader": "3.0.0",
+    "prettier": "1.16.4",
+    "rimraf": "2.6.3",
+    "sass-loader": "7.1.0",
+    "style-loader": "0.23.1",
+    "terser-webpack-plugin": "1.2.3",
+    "vue": "2.6.8",
+    "vue-loader": "15.7.0",
+    "vue-template-compiler": "2.6.8",
+    "webpack": "4.29.6",
+    "webpack-cli": "3.2.3",
+    "webpack-dev-server": "3.2.1",
+    "webpack-merge": "4.2.1"
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>vue-fold-box demo</title>
+<style>
+fold-box {
+  display: none;
+}
+.my-box {
+  border: 2px solid #131;
+}
+.my-box__handle {
+  padding: .5em 1em;
+  color: #fff;
+  background-color: #464;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+.my-box__handle:hover {
+  background-color: #575;
+}
+.my-box__content {
+  transition: height .3s ease-in-out;
+}
+.my-box__inner {
+  padding: .5em 1em;
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <fold-box>
+    <fold-handle>
+      Handle
+    </fold-handle>
+    <fold-content>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </fold-content>
+  </fold-box>
+
+  <hr>
+
+  <fold-box block-name="my-box">
+    <fold-handle>
+      Handle
+    </fold-handle>
+    <fold-content>
+      <div class="my-box__inner">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </fold-content>
+  </fold-box>
+
+  <hr>
+
+  <fold-box block-name="my-box" :is-initial-open="true">
+    <fold-handle>
+      Handle
+    </fold-handle>
+    <fold-content>
+      <div class="my-box__inner">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </div>
+    </fold-content>
+  </fold-box>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script src="vue-fold-box.min.js"></script>
+<script>
+Vue.use(FoldBox);
+new Vue({
+  el: '#app'
+});
+</script>
+</body>
+</html>
