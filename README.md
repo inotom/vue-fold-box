@@ -67,13 +67,13 @@ new Vue({
 </template>
 
 <script>
-import { FoldBox, FoldHandle, FoldContainer } from '@inotom/vue-fold-box';
+import { FoldBox, FoldHandle, FoldContent } from '@inotom/vue-fold-box';
 
 export default {
   components: {
     FoldBox,
     FoldHandle,
-    FoldContainer
+    FoldContent
   }
 }
 </script>
