@@ -1,6 +1,6 @@
 {
   "name": "@inotom/vue-fold-box",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Vue.js component of folding container.",
   "main": "dist/vue-fold-box.umd.js",
   "cdn": "dist/vue-fold-box.min.js",
