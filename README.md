@@ -86,6 +86,7 @@ export default {
 |-------------------|-----------|---------|----------------------------------|
 | `is-initial-open` | `Boolean` | `false` | Initial folding state            |
 | `block-name`      | `String`  | `""`    | Custom class name (Block of BEM) |
+| `handle-tag`      | `String`  | `"div"` | Handle tag name                  |
 
 
 ## License

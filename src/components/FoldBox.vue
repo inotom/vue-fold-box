@@ -8,6 +8,10 @@ export default {
     blockName: {
       type: String,
       default: ''
+    },
+    handleTag: {
+      type: String,
+      default: 'div'
     }
   },
 
@@ -39,6 +43,15 @@ export default {
         height: this.isOpen ? this.height + 'px' : 0
       };
     },
+    handleDomProps() {
+      const props = {};
+      switch (this.handleTag) {
+        case 'a':
+          props['href'] = '#';
+          break;
+      }
+      return props;
+    },
     blockClassName() {
       return this.blockName === '' ? 'fold-box' : this.blockName;
     }
@@ -50,7 +63,10 @@ export default {
   },
 
   methods: {
-    toggle() {
+    toggle(e) {
+      if (this.handleTag === 'a') {
+        e.preventDefault();
+      }
       this.isOpen = !this.isOpen;
     }
   },
@@ -63,12 +79,13 @@ export default {
       },
       [
         createElement(
-          'div',
+          this.handleTag,
           {
             class: this.blockClassName + '__handle',
             on: {
               click: this.toggle
-            }
+            },
+            domProps: this.handleDomProps
           },
           this.handleSlot,
         ),
