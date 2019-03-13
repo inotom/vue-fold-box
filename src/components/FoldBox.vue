@@ -52,6 +52,11 @@ export default {
       }
       return props;
     },
+    stateAttributes() {
+      return {
+        'is-open': this.isOpen
+      };
+    },
     blockClassName() {
       return this.blockName === '' ? 'fold-box' : this.blockName;
     }
@@ -76,6 +81,9 @@ export default {
       'div',
       {
         class: this.blockClassName,
+        attrs: {
+          ...this.stateAttributes
+        }
       },
       [
         createElement(
@@ -85,7 +93,10 @@ export default {
             on: {
               click: this.toggle
             },
-            domProps: this.handleDomProps
+            domProps: this.handleDomProps,
+            attrs: {
+              ...this.stateAttributes
+            }
           },
           this.handleSlot,
         ),
@@ -94,7 +105,10 @@ export default {
           {
             class: this.blockClassName + '__content',
             style: this.contentStyle,
-            ref: 'content'
+            ref: 'content',
+            attrs: {
+              ...this.stateAttributes
+            }
           },
           this.contentSlot
         )

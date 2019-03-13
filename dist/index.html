@@ -50,12 +50,22 @@ fold-box {
 .my-box-button__handle:hover {
   background-color: #755;
 }
+.my-box-button__handle[is-open] {
+  background-color: #866;
+}
 .my-box-button__content {
   transition: height .3s ease-in-out;
 }
 .my-box-button__inner {
   padding: .5em 1em;
   line-height: 1.8;
+  transition: all .3s ease-in-out;
+  transform: translate3d(0, 20px, 0);
+  opacity: 0;
+}
+.my-box-button__content[is-open] .my-box-button__inner {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
 }
 </style>
 </head>
