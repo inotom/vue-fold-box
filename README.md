@@ -2,10 +2,11 @@
 
 A Vue.js component of folding container.
 
+From v2.0.0, it works for Vue 3.
 
 ## Demo
 
-[Demo](http://sandbox.serendip.ws/vue-fold-box.html)
+[Demo](https://sandbox.serendip.ws/vue-fold-box.html)
 
 
 ## Install
@@ -13,8 +14,8 @@ A Vue.js component of folding container.
 ### Browser
 
 ```html
-<script src="vue.js"></script>
-<script src="vue-fold-box.min.js"></script>
+<script src="vue.global.prod.js"></script>
+<script src="vue-fold-box.umd.js"></script>
 ```
 
 
@@ -32,61 +33,58 @@ npm install --save @inotom/vue-fold-box
 ```html
 <div id="app">
   <fold-box>
-    <fold-handle>
+    <template #handle>
       Handle
-    </fold-handle>
-    <fold-content>
+    </template>
+    <template #content>
       Content
-    </fold-content>
+    </template>
   </fold-box>
 </div>
 
-<script src="vue.js"></script>
-<script src="vue-fold-box.min.js"></script>
+<script src="vue.global.prod.js"></script>
+<script src="vue-fold-box.umd.js"></script>
 <script>
-Vue.use(FoldBox);
-new Vue({
-  el: '#app'
-});
+const { createApp } = Vue;
+const { FoldBox } = SwsVueFoldBox;
+
+createApp({
+  components: {
+    FoldBox,
+  },
+}).mount('#app');
 </script>
 ```
 
 
-### SFC
+### SFC (TypeScript)
 
 ```vue
 <template>
   <fold-box>
-    <fold-handle>
+    <template #handle>
       Handle
-    </fold-handle>
-    <fold-content>
+    </template>
+    <template #content>
       Content
-    </fold-content>
+    </template>
   </fold-box>
 </template>
 
-<script>
-import { FoldBox, FoldHandle, FoldContent } from '@inotom/vue-fold-box';
-
-export default {
-  components: {
-    FoldBox,
-    FoldHandle,
-    FoldContent
-  }
-}
+<script setup lang="ts">
+import { FoldBox } from '@inotom/vue-fold-box';
 </script>
 ```
 
 
 ## Props
 
-| Props             | Type      | Default | Description                      |
-|-------------------|-----------|---------|----------------------------------|
-| `is-initial-open` | `Boolean` | `false` | Initial folding state            |
-| `block-name`      | `String`  | `""`    | Custom class name (Block of BEM) |
-| `handle-tag`      | `String`  | `"div"` | Handle tag name                  |
+| Props                | Type      | Default         | Description                            |
+|----------------------|-----------|-----------------|----------------------------------------|
+| `is-initial-open`    | `Boolean` | `false`         | Initial folding state                  |
+| `block-name`         | `String`  | `"fold-box"`    | Custom class name (Block of BEM)       |
+| `animation-duration` | `Number`  | `300`           | Folding animation duration (ms)        |
+| `animation-easing`   | `String`  | `"ease-in-out"` | Folding animation easing function name |
 
 
 ## License

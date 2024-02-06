@@ -1,21 +1,29 @@
 {
   "name": "@inotom/vue-fold-box",
-  "version": "1.2.0",
+  "private": false,
+  "version": "2.0.0",
   "description": "A Vue.js component of folding container.",
+  "type": "module",
   "main": "dist/vue-fold-box.umd.js",
-  "cdn": "dist/vue-fold-box.min.js",
-  "config": {
-    "dist_dir": "dist",
-    "src_dir": "src"
+  "module": "dist/vue-fold-box.umd.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "dist/vue-fold-box.js",
+      "require": "dist/vue-fold-box.umd.js"
+    }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config config/webpack.dev.js",
-    "prebuild": "rimraf $npm_package_config_dist_dir/vue-fold-box.* && npm run clean && npm test",
-    "build": "NODE_ENV=production webpack -p --config config/webpack.prod.js",
-    "clean": "rimraf '**/.DS_Store'",
-    "lint": "eslint $npm_package_config_src_dir",
-    "prettier": "prettier --write 'src/**/*.js'",
-    "test": "npm run lint"
+    "start": "npm run dev",
+    "dev": "vite",
+    "prebuild": "npm run clean",
+    "postbuild": "rimraf --glob 'dist/App.vue.*' & rimraf --glob 'dist/main.d.*'",
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
+    "clean": "rimraf '**/.DS_Store' & rimraf 'dist'",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -24,34 +32,28 @@
   "keywords": [
     "vue"
   ],
-  "author": "inotom (http://www.serendip.ws/)",
+  "author": "inotom (https://www.serendip.ws/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/inotom/vue-fold-box/issues"
   },
   "homepage": "https://github.com/inotom/vue-fold-box#readme",
+  "dependencies": {
+    "vue": "^3.3.11"
+  },
   "devDependencies": {
-    "@babel/core": "7.3.4",
-    "@babel/preset-env": "7.3.4",
-    "autoprefixer": "9.4.10",
-    "babel-eslint": "10.0.1",
-    "babel-loader": "8.0.5",
-    "css-loader": "2.1.1",
-    "eslint": "5.15.1",
-    "eslint-plugin-vue": "5.2.2",
-    "node-sass": "4.11.0",
-    "postcss-loader": "3.0.0",
-    "prettier": "1.16.4",
-    "rimraf": "2.6.3",
-    "sass-loader": "7.1.0",
-    "style-loader": "0.23.1",
-    "terser-webpack-plugin": "1.2.3",
-    "vue": "2.6.8",
-    "vue-loader": "15.7.0",
-    "vue-template-compiler": "2.6.8",
-    "webpack": "4.29.6",
-    "webpack-cli": "3.2.3",
-    "webpack-dev-server": "3.2.1",
-    "webpack-merge": "4.2.1"
+    "@types/node": "20.11.16",
+    "@vitejs/plugin-vue": "^4.5.2",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-vue": "9.21.1",
+    "prettier": "3.2.5",
+    "rimraf": "5.0.5",
+    "sass": "1.70.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-plugin-banner": "0.7.1",
+    "vite-plugin-css-injected-by-js": "3.4.0",
+    "vue-tsc": "^1.8.25"
   }
 }
